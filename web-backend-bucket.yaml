@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: S3 Bucket that stored sorce code, deployed to AWS Lambda.
+Parameters:
+  AppId:
+    AllowedPattern: ^([a-zA-Z0-9-])+$
+    ConstraintDescription: Application IDs must be between 2 and 20 characters, begin with a letter, and only contain lowercase letters, numbers, and hyphens (-).
+    Description: Application ID.
+    MaxLength: 20
+    MinLength: 2
+    Type: String
+Resources:
+  S3Bucket:
+    DeletionPolicy: Delete
+    Description: Creating Amazon S3 bucket for AWS CodeCommit
+    Properties:
+      BucketName:
+        Fn::Join:
+        - '-'
+        - - aws
+          - Ref: AWS::Region
+          - Ref: AWS::AccountId
+          - Ref: AppId
+          - source
+      Tags:
+      - Key: Name
+        Value:
+          Fn::Join:
+          - '-'
+          - - Ref: AppId
+            - S3Bucket
+      VersioningConfiguration:
+        Status: Enabled
+    Type: AWS::S3::Bucket
+Outputs:
+  S3BucketInfo:
+    Description: The S3 Bucket name for AWS CodeCommit
+    Value: !Ref S3Bucket

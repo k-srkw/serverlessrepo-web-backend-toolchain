@@ -1,0 +1,19 @@
+{
+    "name": "web-backend",
+    "description": "SAM Application for web backend",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "aws-sdk": "^2.437.0"
+    },
+    "devDependencies": {
+        "eslint": "^6.7.2",
+        "eslint-plugin-jest": "^23.1.1",
+        "jest": "^24.7.1"
+    },
+    "scripts": {
+        "lint": "eslint --ext .js .",
+        "lint:fix": "eslint --fix --ext .js .",
+        "test": "jest --collectCoverage --coverageReporters text"
+    }
+}
