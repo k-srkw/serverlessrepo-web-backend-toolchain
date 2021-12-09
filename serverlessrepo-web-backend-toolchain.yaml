@@ -739,6 +739,7 @@ Resources:
             Resource:
             - Fn::Sub: arn:${AWS::Partition}:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/${AppId}/*
             - Fn::Sub: arn:${AWS::Partition}:codebuild:${AWS::Region}:${AWS::AccountId}:project/${AppId}
+            - Fn::Sub: arn:${AWS::Partition}:codebuild:${AWS::Region}:${AWS::AccountId}:report-group/${AppId}-*
             - Fn::Sub: arn:${AWS::Partition}:codecommit:${AWS::Region}:${AWS::AccountId}:${RepositoryName}
             - Fn::Sub: arn:${AWS::Partition}:codepipeline:${AWS::Region}:${AWS::AccountId}:${AppId}-Pipeline
             - Fn::Sub: arn:${AWS::Partition}:s3:::${S3Bucket}
